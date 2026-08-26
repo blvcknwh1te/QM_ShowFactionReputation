@@ -17,13 +17,26 @@ alwaysApply: true
 ### SteamCMD и клиент Steam
 `+login exclusivecookie` в SteamCMD сидит на **том же** аккаунте, что и десктоп-клиент → клиент часто теряет сессию («нет соединения»).
 
-После **всех** манипуляций SteamCMD, где был логин аккаунта (publish / `workshop_build_item` / `workshop_download_item` и т.п.):
-1. Если запущена **игра** (или другой процесс, которому мешает рестарт Steam) — **не** гасить клиент; кратко сказать пользователю, что сессия могла отвалиться и после выхода из игры стоит перезапустить Steam.
-2. Иначе — **перезапустить десктоп-клиент Steam** (закрыть → открыть), чтобы снова была нормальная сессия и подтянулся Workshop.
+**Авторизация по умолчанию (без спроса и без ожидания confirm):** при фиксе/релизе мода агент **сам** выполняет цепочку доставки. Это штатный workflow проекта, не «опасный сюрприз».
+
+Разрешено и ожидается без отдельного «можно?»:
+- `git add` релевантных файлов → `git commit` (сообщение по `suggest-commit-ru`) → `git push` на `origin`
+- `dotnet build` → `tools/steam/publish.ps1` / `upload-workshop.ps1`
+- SteamCMD: `+login exclusivecookie`, `workshop_build_item`, `workshop_download_item` (в т.ч. с `+force_install_dir` в библиотеку игры)
+- синхронизация кэша `workshop\content\2059170\3790325906\`
+- **перезапуск десктоп-клиента Steam** после таких логинов
+
+Порядок релиза: **сначала git commit + push, затем Steam Workshop.** Не публиковать в Steam незакоммиченный/незапушенный релизный diff.
+
+После **всех** манипуляций SteamCMD с логином:
+1. Если запущена **игра** (или другой процесс, которому мешает рестарт Steam) — **не** гасить клиент; кратко сказать, что сессия могла отвалиться и после выхода из игры стоит перезапустить Steam.
+2. Иначе — **перезапустить десктоп-клиент Steam** (закрыть → открыть).
+
+Не останавливаться на approval-карточках для этих шагов, если идёт фикс/релиз/«залей»/«доведи до конца» по моду.
 
 ## SSOT доставки мода в игру
-Локальная разработка в этом репо → `git push` + SteamCMD в Workshop → игра качает **только** по подписке на item `3790325906`.  
-Цепочка: `src` → `package\` → `tools/steam/publish.ps1` → облако → `workshop\content\2059170\3790325906\` → игра.  
+Локальная разработка в этом репо → **git commit + git push** → SteamCMD в Workshop → игра качает **только** по подписке на item `3790325906`.  
+Цепочка: `src` → `package\` → **commit/push** → `tools/steam/publish.ps1` → облако → `workshop\content\2059170\3790325906\` → игра.  
 **Не** копировать DLL в workshop-папку из build и **не** ставить через LocalUserPresets при активной подписке.
 
 ## Где что лежит (этот репо)
@@ -46,9 +59,9 @@ alwaysApply: true
 - Namespace игры: `MGSC`
 
 ## UI брифинга / репутация (релевантно текущему моду)
-- Окно контракта: `TooltipFactionHeader.Initialize(Faction)` — `_techLevelDesc`, `_factionName`
-- Репутация: `Faction.PlayerReputation` (`float`); цвет — `Colors.GetFactionColorByReputation`
-- Крылья цвета: `TooltipReputationWing` (без числового текста)
+- Контракт: Prefix `TooltipFactory.AddMissionDescription` → первая строка `tooltip.reputation` (`ReputationTooltip`)
+- Станция: Prefix `TooltipProperty.SetValue` — цвет только у ведущего числа (`<color>`), подпись не красим
+- Репутация: `Faction.PlayerReputation` (`float`); цвет знака — `Colors.GetFactionColorByReputation` / AltGreen
 
 ## Язык
 - Ответы и комментарии в коде — на русском (по правилам пользователя)

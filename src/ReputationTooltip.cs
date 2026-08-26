@@ -38,15 +38,7 @@ namespace ShowFactionReputation
             return Colors.White;
         }
 
-        public static void ApplyNameColor(TooltipProperty panel, float reputation)
-        {
-            if (panel == null || reputation == 0f)
-                return;
-
-            panel.SetNameColor(SignColor(reputation));
-        }
-
-        /// <summary>Число (+/-) в &lt;color&gt;; хвост (наценка и т.п.) не трогаем.</summary>
+        /// <summary>Число (+/-) в &lt;color&gt;; хвост (наценка и т.п.) не трогаем. Подпись не красим.</summary>
         public static string ColorizeLeadingNumber(string value, float reputation)
         {
             if (string.IsNullOrEmpty(value) || reputation == 0f)
@@ -111,7 +103,6 @@ namespace ShowFactionReputation
             panel.SetName(LocalizedLabel());
             // false: не ломать <color> у числа
             panel.SetValue(FormatMissionValue(reputation), firstLetterToUpperCase: false);
-            ApplyNameColor(panel, reputation);
         }
 
         /// <summary>Prefix SetValue: станция с наценкой и любые LocalizeName(tooltip.reputation).</summary>
@@ -130,7 +121,6 @@ namespace ShowFactionReputation
                 return;
 
             value = ColorizeLeadingNumber(value, reputation);
-            ApplyNameColor(panel, reputation);
         }
 
         private static bool TryGetLeadingNumberLength(string value, out int length)
