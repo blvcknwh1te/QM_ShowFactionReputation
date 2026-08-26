@@ -3,22 +3,13 @@ using MGSC;
 
 namespace ShowFactionReputation
 {
-    // Ванильные строки репутации (станция с наценкой и др.) — тот же SSOT цвета.
-    [HarmonyPatch(typeof(TooltipProperty), nameof(TooltipProperty.LocalizeName))]
-    internal static class TooltipProperty_LocalizeName_Patch
-    {
-        public static void Postfix(TooltipProperty __instance, string tag)
-        {
-            ReputationTooltip.NoteLocalizedName(__instance, tag);
-        }
-    }
-
+    // Ваниль (станция + наценка): красим ведущее число в SetValue до записи в TMP.
     [HarmonyPatch(typeof(TooltipProperty), nameof(TooltipProperty.SetValue), typeof(string), typeof(bool))]
     internal static class TooltipProperty_SetValue_Patch
     {
-        public static void Postfix(TooltipProperty __instance, string val)
+        public static void Prefix(TooltipProperty __instance, ref string val, ref bool firstLetterToUpperCase)
         {
-            ReputationTooltip.ApplyColorsIfPending(__instance, val);
+            ReputationTooltip.PrepareValueForReputationRow(__instance, ref val, ref firstLetterToUpperCase);
         }
     }
 }
