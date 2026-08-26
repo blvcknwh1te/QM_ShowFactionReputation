@@ -1,7 +1,7 @@
 {
-  "UniqueModName": "blvcknwh1te_QM_ShowFactionReputation",
+  "UniqueModName": "blvcknwh1te_QM_ReputationOnMissionTooltip",
   "Assemblies": [
-    "QM_ShowFactionReputation.dll"
+    "QM_ReputationOnMissionTooltip.dll"
   ],
   "Dependencies": [],
   "SteamTags": [

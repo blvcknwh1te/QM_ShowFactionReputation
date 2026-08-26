@@ -1,12 +1,12 @@
-[h1]Show Faction Reputation[/h1]
+[h1]Reputation on Mission Tooltip[/h1]
 
-Показывает числовую репутацию игрока с фракцией отдельной строкой в тултипе контракта (первая строка блока миссии).
+Показывает числовую репутацию игрока с фракцией отдельной строкой в mission tooltip (первая строка блока миссии при выборе контракта).
 
 [b]Что делает[/b]
 [list]
 [*] Добавляет строку «Репутация» (ключ локализации tooltip.reputation) перед Миссия / Сложность / …
 [*] Берёт значение из Faction.PlayerReputation
-[*] Только UI / QoL — без правок геймплея, можно ставить и снимать
+[*] Только UI / QoL - без правок геймплея, можно ставить и снимать
 [/list]
 
 [b]Совместимость[/b]
@@ -16,4 +16,4 @@
 [/list]
 
 [b]Исходники[/b]
-https://github.com/blvcknwh1te/QM_ShowFactionReputation
+https://github.com/blvcknwh1te/QM_ReputationOnMissionTooltip

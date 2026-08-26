@@ -30,7 +30,7 @@ alwaysApply: false
 
 ## Conventions
 - `PascalCase` типы/публичное; приватные поля `_camel` (как в игре) или единообразно в моде.
-- Namespace = логика мода (`ShowFactionReputation`), не общий `Patch`.
+- Namespace = логика мода (`ReputationOnMissionTooltip`), не общий `Patch`.
 - Harmony: один класс патча на цель; `[HarmonyPatch]` явный; логи с префиксом мода через `UnityEngine.Debug.Log`.
 - Комментарии — редко, на русском, про «как/почему», не про «что».
 

@@ -13,11 +13,11 @@ if (-not (Test-Path (Join-Path $root "modmanifest.json"))) {
 }
 
 Set-Location (Join-Path $root "src")
-dotnet build QM_ShowFactionReputation.csproj -c Release
+dotnet build QM_ReputationOnMissionTooltip.csproj -c Release
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 $pkg = Join-Path $root "package"
-foreach ($f in @("QM_ShowFactionReputation.dll", "modmanifest.json", "thumbnail.png")) {
+foreach ($f in @("QM_ReputationOnMissionTooltip.dll", "modmanifest.json", "thumbnail.png")) {
     $p = Join-Path $pkg $f
     if (-not (Test-Path $p)) { throw "Missing in package: $f" }
     Write-Host "OK $f ($((Get-Item $p).Length) bytes)"

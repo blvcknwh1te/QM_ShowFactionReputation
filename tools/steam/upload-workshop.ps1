@@ -25,9 +25,9 @@ if ((Test-Path $mediaThumb) -and (Test-Path $pkg)) {
     Copy-Item $mediaThumb (Join-Path $pkg "thumbnail.png") -Force
 }
 
-foreach ($f in @("thumbnail.png", "modmanifest.json", "QM_ShowFactionReputation.dll")) {
+foreach ($f in @("thumbnail.png", "modmanifest.json", "QM_ReputationOnMissionTooltip.dll")) {
     $p = Join-Path $pkg $f
-    if (-not (Test-Path $p)) { throw "Missing in package\: $f — сначала: dotnet build -c Release" }
+    if (-not (Test-Path $p)) { throw "Missing in package\: $f - сначала: dotnet build -c Release" }
 }
 
 # SteamCMD заливает \n как текст; в VDF нужны настоящие переводы строк.
@@ -38,7 +38,7 @@ if ([string]::IsNullOrWhiteSpace($ChangeNote)) {
 }
 $changeEscaped = $ChangeNote -replace '\\', '\\\\' -replace '"', '\"'
 
-$vdfPath = Join-Path $env:TEMP "qm_showfactionreputation_workshop.vdf"
+$vdfPath = Join-Path $env:TEMP "qm_reputationonmissiontooltip_workshop.vdf"
 $vdf = @"
 "workshopitem"
 {
@@ -47,7 +47,7 @@ $vdf = @"
 	"contentfolder"		"d:\\Files\\Mods\\Quasimorph\\package"
 	"previewfile"		"d:\\Files\\Mods\\Quasimorph\\package\\thumbnail.png"
 	"visibility"		"0"
-	"title"			"Show Faction Reputation"
+	"title"			"Reputation on Mission Tooltip"
 	"description"		"$desc"
 	"changenote"		"$changeEscaped"
 }

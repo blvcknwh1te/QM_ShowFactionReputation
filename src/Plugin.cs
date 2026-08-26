@@ -3,11 +3,11 @@ using HarmonyLib;
 using MGSC;
 using UnityEngine;
 
-namespace ShowFactionReputation
+namespace ReputationOnMissionTooltip
 {
     public static class Plugin
     {
-        public const string HarmonyId = "blvcknwh1te.QM_ShowFactionReputation";
+        public const string HarmonyId = "blvcknwh1te.QM_ReputationOnMissionTooltip";
 
         public static string ModAssemblyName => Assembly.GetExecutingAssembly().GetName().Name;
 

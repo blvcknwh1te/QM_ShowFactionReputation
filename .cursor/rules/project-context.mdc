@@ -58,10 +58,11 @@ alwaysApply: true
 - Патчи: Harmony (`0Harmony` уже в Managed игры)
 - Namespace игры: `MGSC`
 
-## UI брифинга / репутация (релевантно текущему моду)
-- Контракт: Prefix `TooltipFactory.AddMissionDescription` → первая строка `tooltip.reputation` (`ReputationTooltip`)
-- Станция: Prefix `TooltipProperty.SetValue` — цвет только у ведущего числа (`<color>`), подпись не красим
-- Репутация: `Faction.PlayerReputation` (`float`); цвет знака — `Colors.GetFactionColorByReputation` / AltGreen
+## Mission tooltip / репутация (этот мод)
+- Workshop title: **Reputation on Mission Tooltip** (`UniqueModName`: `blvcknwh1te_QM_ReputationOnMissionTooltip`)
+- Mission tooltip (до briefing/лодаута): Prefix `TooltipFactory.AddMissionDescription` → первая строка `tooltip.reputation`
+- Станция: Prefix `TooltipProperty.SetValue` - цвет только у ведущего числа (`<color>`), подпись не красим
+- Репутация: `Faction.PlayerReputation` (`float`); цвет знака - `Colors.GetFactionColorByReputation` / AltGreen
 
 ## Язык
 - Ответы и комментарии в коде — на русском (по правилам пользователя)

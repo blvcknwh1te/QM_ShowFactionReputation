@@ -1,1 +1,1 @@
-Show Faction Reputation
+Reputation on Mission Tooltip

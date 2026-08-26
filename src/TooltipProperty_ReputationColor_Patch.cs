@@ -1,7 +1,7 @@
 using HarmonyLib;
 using MGSC;
 
-namespace ShowFactionReputation
+namespace ReputationOnMissionTooltip
 {
     // Ваниль (станция + наценка): красим ведущее число в SetValue до записи в TMP.
     [HarmonyPatch(typeof(TooltipProperty), nameof(TooltipProperty.SetValue), typeof(string), typeof(bool))]

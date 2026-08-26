@@ -1,7 +1,7 @@
 using HarmonyLib;
 using MGSC;
 
-namespace ShowFactionReputation
+namespace ReputationOnMissionTooltip
 {
     // Первая строка блока миссии (до Миссия/Сложность/…).
     [HarmonyPatch(typeof(TooltipFactory), "AddMissionDescription")]

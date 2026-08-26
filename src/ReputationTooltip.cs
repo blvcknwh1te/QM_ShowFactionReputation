@@ -3,7 +3,7 @@ using System.Globalization;
 using MGSC;
 using UnityEngine;
 
-namespace ShowFactionReputation
+namespace ReputationOnMissionTooltip
 {
     /// <summary>SSOT: подпись, значение и цвет строки репутации в тултипах.</summary>
     internal static class ReputationTooltip

@@ -1,12 +1,12 @@
-[h1]Show Faction Reputation[/h1]
+[h1]Reputation on Mission Tooltip[/h1]
 
-Shows the player's numeric reputation with each faction as its own row on the contract tooltip (first row of the mission block).
+Shows the player's numeric reputation with each faction as its own row on the mission tooltip (first row of the mission block when picking a contract).
 
 [b]What it does[/b]
 [list]
 [*] Adds a Reputation row (game locale key tooltip.reputation) above Mission / Difficulty / …
 [*] Uses Faction.PlayerReputation
-[*] UI-only QoL — no gameplay changes, safe to add/remove
+[*] UI-only QoL - no gameplay changes, safe to add/remove
 [/list]
 
 [b]Compatibility[/b]
@@ -16,4 +16,4 @@ Shows the player's numeric reputation with each faction as its own row on the co
 [/list]
 
 [b]Source[/b]
-https://github.com/blvcknwh1te/QM_ShowFactionReputation
+https://github.com/blvcknwh1te/QM_ReputationOnMissionTooltip
