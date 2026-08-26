@@ -1,6 +1,5 @@
 using HarmonyLib;
 using MGSC;
-using UnityEngine;
 
 namespace ShowFactionReputation
 {
@@ -25,16 +24,23 @@ namespace ShowFactionReputation
             if (faction == null)
                 return;
 
-            // Подпись из локализации игры (tooltip.Reputation) — любой язык клиента.
+            // Подпись из локализации игры (tooltip.reputation) — любой язык клиента.
+            float rep = faction.PlayerReputation;
             TooltipProperty panel = __instance.AddPanelToTooltip();
             panel.SetIcon("common_reputation")
-                .LocalizeName("tooltip.Reputation")
-                .SetValue(FormatHelper.ToInt(faction.PlayerReputation, showPlus: true));
+                .LocalizeName("tooltip.reputation")
+                .SetValue(FormatHelper.ToInt(rep, showPlus: true));
 
-            if (faction.PlayerReputation < 0f)
+            // 0 — дефолт панели; минус/плюс — ванильные LightRed / AltGreen (мягкий плюс).
+            if (rep < 0f)
             {
                 panel.SetValueColor(Colors.LightRed);
                 panel.SetNameColor(Colors.LightRed);
+            }
+            else if (rep > 0f)
+            {
+                panel.SetValueColor(Colors.AltGreen);
+                panel.SetNameColor(Colors.AltGreen);
             }
         }
     }
