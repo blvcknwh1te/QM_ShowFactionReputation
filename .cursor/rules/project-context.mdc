@@ -11,7 +11,13 @@ alwaysApply: true
 - Managed: `Quasimorph_Data\Managed\`
 - Workshop контент: `...\steamapps\workshop\content\2059170\<id>\`
 - **Этот мод (Workshop):** id `3790325906` — https://steamcommunity.com/sharedfiles/filedetails/?id=3790325906
+- SteamCMD: `D:\_Programms\steamcmd\steamcmd.exe` (логин аккаунта: `exclusivecookie`, не vanity URL)
 - Unity: `2022.3.62f2`
+
+## SSOT доставки мода в игру
+Локальная разработка в этом репо → `git push` + SteamCMD в Workshop → игра качает **только** по подписке на item `3790325906`.  
+Цепочка: `src` → `package\` → `tools/steam/publish.ps1` → облако → `workshop\content\2059170\3790325906\` → игра.  
+**Не** копировать DLL в workshop-папку из build и **не** ставить через LocalUserPresets при активной подписке.
 
 ## Где что лежит (этот репо)
 | Что | Путь |
@@ -19,7 +25,9 @@ alwaysApply: true
 | Исходники мода | `src/` |
 | Игровые refs (копии) | `libs/game/` |
 | Publicized Assembly-CSharp | `libs/publicized/` |
-| Выход сборки / пакет мода | `package/` |
+| Артефакт перед аплоадом | `package/` |
+| SteamCMD vdf / publish | `tools/steam/` |
+| Thumbnail / тексты Workshop | `media/` |
 | Бэкапы, temp, декомпил | `_dev/` — см. `dev-safety` |
 | Правила агента | `.cursor/rules/` |
 

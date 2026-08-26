@@ -16,8 +16,8 @@
     <GameLibs>$(RepoRoot)libs\game\</GameLibs>
     <PublicizedLibs>$(RepoRoot)libs\publicized\</PublicizedLibs>
     <PackageDir>$(RepoRoot)package\</PackageDir>
+    <!-- Только для справки / steam vdf; в игру идёт облако Workshop, не копируем сюда из build -->
     <SteamId>3790325906</SteamId>
-    <WorkshopDir>D:\_Games\SteamGames\steamapps\workshop\content\2059170\$(SteamId)\</WorkshopDir>
   </PropertyGroup>
 
   <ItemGroup>
@@ -47,13 +47,14 @@
     </Reference>
   </ItemGroup>
 
+  <!-- SSOT для игры = Steam Workshop. Build кладёт артефакты только в package\ → дальше SteamCMD. -->
   <Target Name="CopyToPackage" AfterTargets="Build">
     <ItemGroup>
       <_ModDeploy Include="$(TargetPath)" />
       <_ModDeploy Include="$(RepoRoot)modmanifest.json" />
+      <_ModDeploy Include="$(RepoRoot)media\thumbnail.png" Condition="Exists('$(RepoRoot)media\thumbnail.png')" />
     </ItemGroup>
-    <MakeDir Directories="$(PackageDir);$(WorkshopDir)" />
+    <MakeDir Directories="$(PackageDir)" />
     <Copy SourceFiles="@(_ModDeploy)" DestinationFolder="$(PackageDir)" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="@(_ModDeploy)" DestinationFolder="$(WorkshopDir)" SkipUnchangedFiles="true" />
   </Target>
 </Project>

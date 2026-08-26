@@ -1,27 +1,34 @@
 # Загрузка/обновление Workshop item через SteamCMD (preview + контент + метаданные).
-# Использование:
-#   pwsh .\upload-workshop.ps1 -SteamUser YOUR_STEAM_LOGIN
-# Пароль: интерактивно спросит SteamCMD (Steam Guard — в том же окне).
+# SSOT для игры: облако Workshop → папка подписки. Не копировать DLL в workshop\ вручную.
+#
+#   pwsh .\upload-workshop.ps1
+#   pwsh .\upload-workshop.ps1 -SteamUser exclusivecookie
+# Или всё сразу: pwsh .\publish.ps1
 
 param(
-    [Parameter(Mandatory = $true)]
-    [string] $SteamUser
+    [string] $SteamUser = "exclusivecookie"
 )
 
 $ErrorActionPreference = "Stop"
 $steamcmd = "D:\_Programms\steamcmd\steamcmd.exe"
 $vdf = Join-Path $PSScriptRoot "workshop_item.vdf"
+$pkg = "d:\Files\Mods\Quasimorph\package"
+$mediaThumb = "d:\Files\Mods\Quasimorph\media\thumbnail.png"
 
 if (-not (Test-Path $steamcmd)) { throw "steamcmd not found: $steamcmd" }
 if (-not (Test-Path $vdf)) { throw "vdf not found: $vdf" }
-if (-not (Test-Path "d:\Files\Mods\Quasimorph\package\thumbnail.png")) {
-    throw "thumbnail.png missing in package\"
+
+if ((Test-Path $mediaThumb) -and (Test-Path $pkg)) {
+    Copy-Item $mediaThumb (Join-Path $pkg "thumbnail.png") -Force
 }
-if (-not (Test-Path "d:\Files\Mods\Quasimorph\package\modmanifest.json")) {
-    throw "modmanifest.json missing in package\"
+
+foreach ($f in @("thumbnail.png", "modmanifest.json", "QM_ShowFactionReputation.dll")) {
+    $p = Join-Path $pkg $f
+    if (-not (Test-Path $p)) { throw "Missing in package\: $f — сначала: dotnet build -c Release" }
 }
 
 Write-Host "Steam user: $SteamUser"
 Write-Host "VDF: $vdf"
+Write-Host "Content: $pkg"
 & $steamcmd +login $SteamUser +workshop_build_item $vdf +quit
 exit $LASTEXITCODE

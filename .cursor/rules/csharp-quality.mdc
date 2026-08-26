@@ -36,10 +36,12 @@ alwaysApply: false
 
 ## Структура репо
 ```
-Quasimorph/                 # корень разработки
-  src/                      # исходники
-  libs/game/                # копии Managed (не в пакет мода)
-  libs/publicized/          # publicized Assembly-CSharp
-  package/                  # выход для Workshop / локальной установки
-  modmanifest.json          # манифест (корень или package — SSOT один)
+Quasimorph/
+  src/                 # исходники; build → только package\
+  libs/game|publicized # refs (не в пакет)
+  package/             # DLL + manifest + thumbnail → SteamCMD
+  tools/steam/         # publish.ps1 / upload-workshop.ps1 / vdf
+  media/               # thumbnail + тексты страницы Workshop
+  modmanifest.json     # SSOT манифеста (копируется в package)
 ```
+Игра берёт мод из **Workshop-подписки**, не из ручной копии в workshop-папку.
