@@ -1,0 +1,42 @@
+---
+description: Базовый контекст Quasimorph-проекта — версия, пути, libs, моддинг API
+alwaysApply: true
+---
+
+# Контекст проекта
+
+## Игра
+- Версия: **Quasimorph 1.0** (Steam)
+- Корень игры (READ/COPY ONLY): `D:\_Games\SteamGames\steamapps\common\Quasimorph`
+- Managed: `Quasimorph_Data\Managed\`
+- Workshop контент: `...\steamapps\workshop\content\2059170\<id>\`
+- Unity: `2022.3.62f2`
+
+## Где что лежит (этот репо)
+| Что | Путь |
+|---|---|
+| Исходники мода | `src/` |
+| Игровые refs (копии) | `libs/game/` |
+| Publicized Assembly-CSharp | `libs/publicized/` |
+| Выход сборки / пакет мода | `package/` |
+| Бэкапы, temp, декомпил | `_dev/` — см. `dev-safety` |
+| Правила агента | `.cursor/rules/` |
+
+## Моддинг API (1.0)
+- Манифест: `modmanifest.json` (`UniqueModName`, `Assemblies`, `Dependencies`, `SteamTags`)
+- Хук: `[MGSC.Hook(ModHookType.…)]` на **public static** метод; контекст — `IModContext`
+- Типичные хуки: `BeforeBootstrap`, `AfterConfigsLoaded`, `AfterBootstrap`, …
+- Патчи: Harmony (`0Harmony` уже в Managed игры)
+- Namespace игры: `MGSC`
+
+## UI брифинга / репутация (релевантно текущему моду)
+- Окно контракта: `TooltipFactionHeader.Initialize(Faction)` — `_techLevelDesc`, `_factionName`
+- Репутация: `Faction.PlayerReputation` (`float`); цвет — `Colors.GetFactionColorByReputation`
+- Крылья цвета: `TooltipReputationWing` (без числового текста)
+
+## Язык
+- Ответы и комментарии в коде — на русском (по правилам пользователя)
+
+## Ограничения
+- Игру не модифицировать на месте: только копировать DLL в `libs/`.
+- В пакет мода не класть игровые/Unity DLL.

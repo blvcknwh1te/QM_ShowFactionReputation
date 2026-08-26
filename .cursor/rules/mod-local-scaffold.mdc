@@ -1,0 +1,29 @@
+---
+description: Чеклист нового локального Quasimorph-мода — git, манифест, хук, package
+globs: "{src,package}/**/*"
+alwaysApply: false
+---
+
+# Новый локальный мод — обязательный чеклист
+
+При **создании** каркаса мода выполнить всё ниже в той же задаче (не «потом»).
+
+## Git
+1. `git init` в корне репо (если ещё нет) + `.gitignore` (`bin/`, `obj/`, `libs/game/`, `libs/publicized/`, `_dev/temp/`, `.tmp/`)
+2. Remote **не** добавлять самому
+3. Коммит — только по явной просьбе пользователя (см. `suggest-commit-ru`)
+
+## Каркас
+- `src/*.csproj` — `net48`, Library; refs на `libs/…` с `Private=false`
+- Точка входа: `[Hook(ModHookType.BeforeBootstrap)]` (или иной подходящий) + Harmony
+- `modmanifest.json` + выход в `package/` (DLL мода + манифест + thumbnail при наличии)
+- Hard-deps минимальны; soft — runtime (см. `mod-compatibility`)
+
+## Опционально, но сразу если нужно
+- Конфиг с дефолтами + флаг debug-лога (выкл по умолчанию)
+- Лог только под флагом: `Debug.Log("[UniqueModName] …")`
+
+## Не делать
+- Класть в `package/` игровые/Unity/0Harmony DLL
+- Использовать устаревший `BootstrapMod` / BepInEx как обязательный рантайм для 1.0
+- Hard-dep на опциональных соседей
