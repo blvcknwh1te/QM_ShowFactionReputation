@@ -20,7 +20,7 @@ alwaysApply: true
 **Авторизация по умолчанию (без спроса и без ожидания confirm):** при фиксе/релизе мода агент **сам** выполняет цепочку доставки. Это штатный workflow проекта, не «опасный сюрприз».
 
 Разрешено и ожидается без отдельного «можно?»:
-- `git add` релевантных файлов → `git commit` (сообщение по `suggest-commit-ru`) → `git push` на `origin`
+- `git add -A` → `git commit` (сообщение по `suggest-commit-ru`) → `git push` на `origin`
 - `dotnet build` → `tools/steam/publish.ps1` / `upload-workshop.ps1`
 - SteamCMD: `+login exclusivecookie`, `workshop_build_item`, `workshop_download_item` (в т.ч. с `+force_install_dir` в библиотеку игры)
 - синхронизация кэша `workshop\content\2059170\3790325906\`
