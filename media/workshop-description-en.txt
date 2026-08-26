@@ -1,0 +1,20 @@
+[h1]Show Faction Reputation[/h1]
+
+Shows the player's numeric reputation with each faction on the mission briefing / contract tooltip (next to the tech level).
+
+[b]What it does[/b]
+[list]
+[*] Appends reputation to the faction header on mission tooltips (e.g. TU 3 · 12)
+[*] Uses the game's own Faction.PlayerReputation value
+[*] UI-only QoL — no gameplay changes, safe to add/remove
+[/list]
+
+[b]Compatibility[/b]
+[list]
+[*] Quasimorph 1.0
+[*] Soft-compatible with mods that also patch the same tooltip (e.g. Show Tech Level) — this mod runs last and appends to the final text
+[*] No hard dependencies (Harmony is already bundled with the game)
+[/list]
+
+[b]Source[/b]
+https://github.com/blvcknwh1te/QM_ShowFactionReputation

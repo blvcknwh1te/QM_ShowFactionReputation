@@ -16,6 +16,8 @@
     <GameLibs>$(RepoRoot)libs\game\</GameLibs>
     <PublicizedLibs>$(RepoRoot)libs\publicized\</PublicizedLibs>
     <PackageDir>$(RepoRoot)package\</PackageDir>
+    <SteamId>3790325906</SteamId>
+    <WorkshopDir>D:\_Games\SteamGames\steamapps\workshop\content\2059170\$(SteamId)\</WorkshopDir>
   </PropertyGroup>
 
   <ItemGroup>
@@ -46,8 +48,12 @@
   </ItemGroup>
 
   <Target Name="CopyToPackage" AfterTargets="Build">
-    <MakeDir Directories="$(PackageDir)" />
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(PackageDir)" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="$(RepoRoot)modmanifest.json" DestinationFolder="$(PackageDir)" SkipUnchangedFiles="true" />
+    <ItemGroup>
+      <_ModDeploy Include="$(TargetPath)" />
+      <_ModDeploy Include="$(RepoRoot)modmanifest.json" />
+    </ItemGroup>
+    <MakeDir Directories="$(PackageDir);$(WorkshopDir)" />
+    <Copy SourceFiles="@(_ModDeploy)" DestinationFolder="$(PackageDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_ModDeploy)" DestinationFolder="$(WorkshopDir)" SkipUnchangedFiles="true" />
   </Target>
 </Project>

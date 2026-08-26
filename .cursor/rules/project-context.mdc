@@ -10,6 +10,7 @@ alwaysApply: true
 - Корень игры (READ/COPY ONLY): `D:\_Games\SteamGames\steamapps\common\Quasimorph`
 - Managed: `Quasimorph_Data\Managed\`
 - Workshop контент: `...\steamapps\workshop\content\2059170\<id>\`
+- **Этот мод (Workshop):** id `3790325906` — https://steamcommunity.com/sharedfiles/filedetails/?id=3790325906
 - Unity: `2022.3.62f2`
 
 ## Где что лежит (этот репо)
