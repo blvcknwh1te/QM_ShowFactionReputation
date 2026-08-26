@@ -1,0 +1,12 @@
+{
+  "UniqueModName": "blvcknwh1te_QM_ShowFactionReputation",
+  "Assemblies": [
+    "QM_ShowFactionReputation.dll"
+  ],
+  "Dependencies": [],
+  "SteamTags": [
+    "1.0",
+    "Quality of Life",
+    "UI"
+  ]
+}
