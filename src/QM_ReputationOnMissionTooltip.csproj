@@ -13,8 +13,9 @@
 
   <PropertyGroup>
     <RepoRoot>$(MSBuildThisFileDirectory)..\</RepoRoot>
-    <GameLibs>$(RepoRoot)libs\game\</GameLibs>
-    <PublicizedLibs>$(RepoRoot)libs\publicized\</PublicizedLibs>
+    <WorkspaceRoot>$(RepoRoot)..\</WorkspaceRoot>
+    <GameLibs>$(WorkspaceRoot)libs\game\</GameLibs>
+    <PublicizedLibs>$(WorkspaceRoot)libs\publicized\</PublicizedLibs>
     <PackageDir>$(RepoRoot)package\</PackageDir>
     <!-- Только для справки / steam vdf; в игру идёт облако Workshop, не копируем сюда из build -->
     <SteamId>3790325906</SteamId>

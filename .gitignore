@@ -1,16 +1,12 @@
 # Сборки
 **/bin/
 **/obj/
-.tmp/
 
-# Dev scratch
+# Dev scratch (если появится локально в папке мода)
 _dev/temp/
 _dev/decompiled/
 _dev/backups/
 
-# Игровые DLL — локальные копии (не коммитить)
-libs/game/
-libs/publicized/
 tools/*.zip
 tools/*/
 !tools/.gitkeep

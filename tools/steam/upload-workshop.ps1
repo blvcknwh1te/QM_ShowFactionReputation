@@ -12,10 +12,11 @@ param(
 
 $ErrorActionPreference = "Stop"
 $steamcmd = "D:\_Programms\steamcmd\steamcmd.exe"
+$modRoot = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $vdfTemplate = Join-Path $PSScriptRoot "workshop_item.vdf"
-$pkg = "d:\Files\Mods\Quasimorph\package"
-$mediaThumb = "d:\Files\Mods\Quasimorph\media\thumbnail.png"
-$descFile = "d:\Files\Mods\Quasimorph\media\workshop-description.txt"
+$pkg = Join-Path $modRoot "package"
+$mediaThumb = Join-Path $modRoot "media\thumbnail.png"
+$descFile = Join-Path $modRoot "media\workshop-description.txt"
 
 if (-not (Test-Path $steamcmd)) { throw "steamcmd not found: $steamcmd" }
 if (-not (Test-Path $vdfTemplate)) { throw "vdf not found: $vdfTemplate" }
@@ -38,14 +39,18 @@ if ([string]::IsNullOrWhiteSpace($ChangeNote)) {
 }
 $changeEscaped = $ChangeNote -replace '\\', '\\\\' -replace '"', '\"'
 
+$pkgEscaped = ($pkg -replace '\\', '\\\\')
+$thumbPath = Join-Path $pkg "thumbnail.png"
+$thumbEscaped = ($thumbPath -replace '\\', '\\\\')
+
 $vdfPath = Join-Path $env:TEMP "qm_reputationonmissiontooltip_workshop.vdf"
 $vdf = @"
 "workshopitem"
 {
 	"appid"		"2059170"
 	"publishedfileid"	"3790325906"
-	"contentfolder"		"d:\\Files\\Mods\\Quasimorph\\package"
-	"previewfile"		"d:\\Files\\Mods\\Quasimorph\\package\\thumbnail.png"
+	"contentfolder"		"$pkgEscaped"
+	"previewfile"		"$thumbEscaped"
 	"visibility"		"0"
 	"title"			"Reputation on Mission Tooltip"
 	"description"		"$desc"
