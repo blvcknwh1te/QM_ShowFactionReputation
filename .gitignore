@@ -7,8 +7,15 @@ _dev/temp/
 _dev/decompiled/
 _dev/backups/
 
+# Игровые DLL — локальные копии (не коммитить; структура через .gitkeep)
+libs/game/*
+!libs/game/.gitkeep
+libs/publicized/*
+!libs/publicized/.gitkeep
+
 tools/*.zip
 tools/*/
 !tools/.gitkeep
 !tools/steam/
 !tools/steam/**
+!tools/setup-libs.ps1
