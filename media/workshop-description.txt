@@ -1,27 +1,5 @@
 [h1]Reputation on Mission Tooltip[/h1]
 
-Показывает числовую репутацию игрока с фракцией отдельной строкой в mission tooltip (первая строка блока миссии при выборе контракта).
-
-[b]Что делает[/b]
-[list]
-[*] Добавляет строку «Репутация» (ключ локализации tooltip.reputation) перед Миссия / Сложность / …
-[*] Берёт значение из Faction.PlayerReputation
-[*] Только UI / QoL - без правок геймплея, можно ставить и снимать
-[/list]
-
-[b]Совместимость[/b]
-[list]
-[*] Quasimorph 1.0
-[*] Hard-зависимостей нет (Harmony уже в игре)
-[/list]
-
-[b]Исходники[/b]
-https://github.com/blvcknwh1te/QM_ReputationOnMissionTooltip
-
-[hr]
-
-[h1]Reputation on Mission Tooltip[/h1]
-
 Shows the player's numeric reputation with each faction as its own row on the mission tooltip (first row of the mission block when picking a contract).
 
 [b]What it does[/b]
@@ -38,4 +16,26 @@ Shows the player's numeric reputation with each faction as its own row on the mi
 [/list]
 
 [b]Source[/b]
+https://github.com/blvcknwh1te/QM_ReputationOnMissionTooltip
+
+[hr]
+
+[h1]Reputation on Mission Tooltip[/h1]
+
+Показывает числовую репутацию игрока с фракцией отдельной строкой в mission tooltip (первая строка блока миссии при выборе контракта).
+
+[b]Что делает[/b]
+[list]
+[*] Добавляет строку «Репутация» (ключ локализации tooltip.reputation) перед Миссия / Сложность / …
+[*] Берёт значение из Faction.PlayerReputation
+[*] Только UI / QoL - без правок геймплея, можно ставить и снимать
+[/list]
+
+[b]Совместимость[/b]
+[list]
+[*] Quasimorph 1.0
+[*] Hard-зависимостей нет (Harmony уже в игре)
+[/list]
+
+[b]Исходники[/b]
 https://github.com/blvcknwh1te/QM_ReputationOnMissionTooltip
