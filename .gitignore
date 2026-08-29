@@ -1,6 +1,7 @@
 # Сборки
 **/bin/
 **/obj/
+package/
 
 # Dev scratch (если появится локально в папке мода)
 _dev/temp/
